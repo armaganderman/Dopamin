@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Statistics.Core\Statistics.Core.csproj">
+      <Project>{a571a4cb-b737-437a-825f-981be31473ed}</Project>
+      <Name>Statistics.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
