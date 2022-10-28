@@ -2,13 +2,8 @@
 using Statistics.Core.RandomNumbers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -19,6 +14,8 @@ namespace Statistics.WinformsUI
         #region Private Fields
 
         private int _iterationNumber;
+        private double _inputMinimum;
+        private double _inputMaximum;
         private double _inputMean;
         private double _inputSkewness;
         private double _inputStdDev; //Standard Deviation
@@ -85,33 +82,47 @@ namespace Statistics.WinformsUI
 
             GetOutputs();
 
-            //if (chckbxDisplayOutputs.Checked)
-            //    PopulateListBoxes();
+            if (chckbxDisplayOutputs.Checked)
+                PopulateListBoxes();
 
             //GetStatistics();
             DisplayHistogram();
-            //DisplayPDF();
-            //DisplayCDF();
+            DisplayPDF();
+            DisplayCDF();
         }
-
 
         private void GetInputs()
         {
             _iterationNumber = Convert.ToInt32(cmbbxIterationNumber.SelectedItem.ToString());
+            _inputMinimum = Convert.ToDouble(txtbxMinimum.Text);
+            _inputMaximum = Convert.ToDouble(txtbxMaximum.Text);
             _inputMean = Convert.ToDouble(txtbxMode.Text);
             _inputSkewness = Convert.ToDouble(txtbxSkewness.Text);
             _inputStdDev = Convert.ToDouble(txtbxStdDev.Text);
         }
 
-
         private void GetOutputs()
         {
-            _randomNumberList = RandomNumberGenerator.GetListOfSkewedNormalRandomNumbers(_iterationNumber, _inputStdDev, _inputSkewness, _inputMean);
-            //_pdfList = NormalDistribution.GetListOfPDF(_inputMean, _inputStdDev, _randomNumberList);
-            //_cdfList = NormalDistribution.GetListOfCDF(_inputMean, _inputStdDev, _randomNumberList);
+            _randomNumberList = RandomNumberGenerator.GetListOfSkewedNormalRandomNumbers(_iterationNumber, _inputStdDev, _inputSkewness, _inputMinimum, _inputMaximum, _inputMean);
+            _pdfList = SkewedNormalDistribution.GetListOfPDF(_inputMean, _inputStdDev, _inputSkewness, _randomNumberList);
+            _cdfList = SkewedNormalDistribution.GetListOfCDF(_inputMean, _inputStdDev, _inputSkewness, _randomNumberList);
         }
 
+        private void PopulateListBoxes()
+        {
+            var randomList = _randomNumberList.ToList();
+            randomList.RemoveRange(1000, randomList.Count - 1000);
 
+            var pdfList = _pdfList.ToList();
+            pdfList.RemoveRange(1000, pdfList.Count - 1000);
+
+            var cdfList = _cdfList.ToList();
+            cdfList.RemoveRange(1000, cdfList.Count - 1000);
+
+            lstbxRandomNumbers.DataSource = randomList;
+            lstbxPDF.DataSource = pdfList;
+            lstbxCDF.DataSource = cdfList;
+        }
 
         private void DisplayHistogram()
         {
@@ -150,8 +161,8 @@ namespace Statistics.WinformsUI
             }
             // *** ----- ***
 
-            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMean - _inputMean * 3;
-            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMean + _inputStdDev * 3;
+            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
+            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
             chrtRandomNumbers.ChartAreas[0].AxisY.Minimum = 0;
             chrtRandomNumbers.ChartAreas[0].AxisY.Maximum = buckets.Max();
 
@@ -162,9 +173,112 @@ namespace Statistics.WinformsUI
             chrtRandomNumbers.ChartAreas[0].AxisY.LabelStyle.Format = "0.00";
         }
 
+        private void DisplayPDF()
+        {
+            chrtPDF.Series.Clear();
+            chrtPDF.Series.Add("RandomNumbers");
+            chrtPDF.Series.Add("PDF");
 
+            chrtPDF.Series["RandomNumbers"].ChartType = SeriesChartType.Column;
+            chrtPDF.Series["RandomNumbers"].BorderWidth = 0;
+            chrtPDF.Series["RandomNumbers"]["PointWidth"] = "1";
+            chrtPDF.Series["RandomNumbers"].YAxisType = AxisType.Primary;
 
+            chrtPDF.Series["PDF"].ChartType = SeriesChartType.StackedColumn;
+            chrtPDF.Series["PDF"]["PointWidth"] = "1";
+            chrtPDF.Series["PDF"].YAxisType = AxisType.Secondary;
 
+            chrtPDF.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+            chrtPDF.ChartAreas[0].AxisY2.MajorGrid.Enabled = false;
+
+            chrtPDF.ChartAreas[0].AxisX.Title = "Value";
+            chrtPDF.ChartAreas[0].AxisY.Title = "Frequency";
+            chrtPDF.ChartAreas[0].AxisY2.Title = "PDF";
+
+            chrtPDF.ChartAreas[0].AxisX.LabelStyle.Format = "0.00";
+            chrtPDF.ChartAreas[0].AxisY.LabelStyle.Format = "0.00";
+            chrtPDF.ChartAreas[0].AxisY2.LabelStyle.Format = "0.00";
+
+            chrtPDF.Legends.Clear();
+
+            // *** Below code is to create histogram ***
+            var totalBuckets = 50;
+            var buckets = new int[totalBuckets];
+            var min = _randomNumberList.Min();
+            var max = _randomNumberList.Max();
+            var bucketWidth = (max - min) / totalBuckets;
+
+            for (int i = 0; i < _iterationNumber; i++)
+            {
+                var bucketIndex = (int)((_randomNumberList[i] - min) / bucketWidth);
+                if (bucketIndex >= totalBuckets)
+                    bucketIndex--;
+
+                buckets[bucketIndex]++;
+            }
+
+            for (int i = 0; i < totalBuckets - 1; i++)
+            {
+                var x = (bucketWidth * (i + 1) + min);
+                var y = buckets[i];
+
+                chrtPDF.Series["RandomNumbers"].Points.AddXY(x, y);
+            }
+
+            chrtPDF.Series["PDF"].Points.AddXY(0, 0);
+            // *** ----- ***
+
+            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
+            chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
+            chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
+            chrtPDF.ChartAreas[0].AxisY2.Maximum = _pdfList.Max();
+        }
+
+        private void DisplayCDF()
+        {
+            chrtCDF.Series.Clear();
+            chrtCDF.Series.Add("CDF");
+
+            chrtCDF.Series["CDF"].ChartType = SeriesChartType.Point;
+            chrtCDF.Series["CDF"].BorderWidth = 1;
+
+            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+
+            chrtCDF.ChartAreas[0].AxisX.Title = "Value";
+            chrtCDF.ChartAreas[0].AxisY.Title = "CDF";
+
+            chrtCDF.ChartAreas[0].AxisX.LabelStyle.Format = "0.00";
+            chrtCDF.ChartAreas[0].AxisY.LabelStyle.Format = "0.00";
+
+            chrtCDF.Legends.Clear();
+
+            var cdfList = new List<double>();
+            var randomNumberList = new List<double>();
+
+            if (_cdfList.Count() > 1000)
+            {
+                var skipNumber = _cdfList.Count() / 1000;
+
+                for (int i = 0; i < _cdfList.Count; i = i + skipNumber)
+                {
+                    cdfList.Add(_cdfList[i]);
+                    randomNumberList.Add(_randomNumberList[i]);
+                }
+            }
+            else
+            {
+                cdfList = _cdfList;
+                randomNumberList = _randomNumberList;
+            }
+
+            for (int i = 0; i < cdfList.Count; i++)
+            {
+                chrtCDF.Series[0].Points.AddXY(randomNumberList[i], cdfList[i]);
+            }
+        }
 
         #region Helpers
 
@@ -186,6 +300,5 @@ namespace Statistics.WinformsUI
 
         #endregion
 
-        
     }
 }

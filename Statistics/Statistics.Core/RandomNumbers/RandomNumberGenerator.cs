@@ -124,13 +124,34 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="dbIteration">iteration number for double block random number generation. 5-10 is a suitable range</param>
         /// <returns></returns>
         /// https://inis.iaea.org/collection/NCLCollectionStore/_Public/26/055/26055147.pdf Date:26 Oct 2022
-        public static double GetSkewedNormalRandomNumber(double standardDeviation, double skewness, double mean = 0, int dbIteration = 10)
+        /// A method for generating skewed random numbers using two overlapping uniform distributions, Ermak & Nasstrom, 1995.
+        public static double GetSkewedNormalRandomNumber(double standardDeviation=1, double skewness=0, double minimum=-1, double maximum=1, double mean = 0, int dbIteration = 10)
+        {
+            var randomNumber = 0d;
+
+            do
+            {
+                var dbRandomNumber = GetSkewedRandomNumber(standardDeviation, skewness, dbIteration);
+                randomNumber = mean + standardDeviation * dbRandomNumber;
+            } while (randomNumber <= minimum && randomNumber >= maximum);
+
+            return randomNumber;
+        }
+
+        /// <summary>
+        /// Returns skewed normal random number derived from double block random number. Calculations in the method depends on Ermak & Naastrom, 1995 publication. 
+        /// </summary>
+        /// <param name="standardDeviation">standard deviation</param>
+        /// <param name="skewness">skewness</param>
+        /// <param name="dbIteration">iteration number for double block random number generation. 5-10 is a suitable range</param>
+        /// <returns></returns>
+        private static double GetSkewedRandomNumber(double standardDeviation=1, double skewness=0, int dbIteration = 10)
         {
             var variance = Math.Pow(standardDeviation, 2);
             const double a = 2.236067977; // ---> Square root of 5
             const double b = 0.222222222;
             const double c = 243 / 32;
-            double finalran, sumdbran = 0;
+            double finalrun, sumdbran = 0;
             double dbmom3, dbmean1, dbmean2, dbprob1, dbdelta1, dbdelta2, randomNumber1, randomNumber2, dbran, terma, termb;
 
             dbmom3 = Math.Sqrt(dbIteration) * skewness * Math.Pow(variance, 1.5);
@@ -153,13 +174,14 @@ namespace Statistics.Core.RandomNumbers
                 else
                     dbran = dbmean2 + (2 * dbdelta2 * (randomNumber2 - 0.5));
 
+                //sumdbran is the sum of double block random numbers created by the iteration
                 sumdbran = sumdbran + dbran;
             }
 
-            //Calculate final random number
-            finalran = sumdbran / Math.Sqrt(dbIteration);
+            //Calculate final skewed normal random number
+            finalrun = sumdbran / Math.Sqrt(dbIteration);
 
-            return finalran;
+            return finalrun;
         }
 
         #endregion
@@ -276,13 +298,13 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="skewness"></param>
         /// <param name="dbIteration"></param>
         /// <returns></returns>
-        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber, double standardDeviation, double skewness, double mean = 0, int dbIteration=10)
+        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber=1000, double standardDeviation=1, double skewness=0, double minimum = -1, double maximum = 1, double mean = 0, int dbIteration=10)
         {
             var randomNumberList = new List<double>();
 
             for (int i = 0; i < iterationNumber; i++)
             {
-                var randomNumber = GetSkewedNormalRandomNumber(standardDeviation, skewness, mean, dbIteration);
+                var randomNumber = GetSkewedNormalRandomNumber(standardDeviation, skewness, minimum, maximum, mean, dbIteration);
                 randomNumberList.Add(randomNumber);
             }
 

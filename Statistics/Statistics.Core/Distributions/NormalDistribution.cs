@@ -72,7 +72,7 @@ namespace Statistics.Core.Distributions
         }
 
         /// <summary>
-        /// Mean value of normal distribution.
+        /// Returns mean value of normal distribution.
         /// </summary>
         /// <param name="mean">mean value</param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace Statistics.Core.Distributions
         }
 
         /// <summary>
-        /// Median value of normal distribution. In facti for a normal distribution, mean = median = mode.
+        /// Returns median value of normal distribution. In facti for a normal distribution, mean = median = mode.
         /// </summary>
         /// <param name="mean">mean value</param>
         /// <returns></returns>
@@ -92,7 +92,7 @@ namespace Statistics.Core.Distributions
         }
 
         /// <summary>
-        /// Mode value of normal distribution. In facti for a normal distribution, mean = median = mode.
+        /// Returns mode value of normal distribution. In facti for a normal distribution, mean = median = mode.
         /// </summary>
         /// <param name="mean">mean value</param>
         /// <returns></returns>
@@ -102,7 +102,7 @@ namespace Statistics.Core.Distributions
         }
 
         /// <summary>
-        /// Variance value of normal distribution
+        /// Returns variance value of normal distribution
         /// </summary>
         /// <param name="standardDeviation">standard deviation</param>
         /// <returns></returns>
@@ -111,43 +111,8 @@ namespace Statistics.Core.Distributions
             return Math.Pow(standardDeviation, 2);
         }
 
-
-        public static double GetMean(List<double> randomNumberList)
-        {
-            var mean = 0d;
-            var total = 0d;
-
-            for (int i = 0; i < randomNumberList.Count; i++)
-            {
-                total = total + randomNumberList[i];
-            }
-
-            mean = total / randomNumberList.Count;
-
-            return mean;
-        }
-
-
-
-        public static double GetStandardDeviation(List<double> randomNumberList)
-        {
-            var standardDeviation = 0d;
-            var mean = GetMean(randomNumberList);
-            var total = 0d;
-
-            for (int i = 0; i < randomNumberList.Count; i++)
-            {
-                var sum = Math.Pow(randomNumberList[i] - mean, 2);
-                total = total + sum;
-            }
-
-            standardDeviation = Math.Sqrt(total / randomNumberList.Count);
-
-            return standardDeviation;
-        }
-
         /// <summary>
-        /// Standard Deviation value of normal distribution.
+        /// Returns standard Deviation value of normal distribution.
         /// </summary>
         /// <param name="standardDeviation">standard deviation</param>
         /// <returns></returns>
@@ -155,9 +120,6 @@ namespace Statistics.Core.Distributions
         {
             return standardDeviation;
         }
-
-
-
 
         /// <summary>
         /// Returns a list of PDF values
@@ -179,7 +141,6 @@ namespace Statistics.Core.Distributions
             return pdfList;
         }
 
-
         /// <summary>
         /// Returns a list of CDF values
         /// </summary>
@@ -199,10 +160,6 @@ namespace Statistics.Core.Distributions
 
             return cdfList;
         }
-
-
-
-
 
     }
 }

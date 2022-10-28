@@ -2,12 +2,8 @@
 using Statistics.Core.RandomNumbers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -180,8 +176,8 @@ namespace Statistics.WinformsUI
             }
             // *** ----- ***
 
-            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMinimum;
-            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMaximum;
+            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev); ;
+            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
             chrtRandomNumbers.ChartAreas[0].AxisY.Minimum = 0;
             chrtRandomNumbers.ChartAreas[0].AxisY.Maximum = buckets.Max();
 
@@ -247,9 +243,9 @@ namespace Statistics.WinformsUI
             chrtPDF.Series["PDF"].Points.AddXY(0, 0);
             // *** ----- ***
 
-            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMinimum;
-            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMaximum;
-            chrtPDF.ChartAreas[0].AxisY.Minimum = buckets.Min();
+            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
             chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
             chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
             chrtPDF.ChartAreas[0].AxisY2.Maximum = _pdfList.Max();
@@ -263,8 +259,8 @@ namespace Statistics.WinformsUI
             chrtCDF.Series["CDF"].ChartType = SeriesChartType.Point;
             chrtCDF.Series["CDF"].BorderWidth = 1;
 
-            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMinimum;
-            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMaximum;
+            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
 
             chrtCDF.ChartAreas[0].AxisX.Title = "Value";
             chrtCDF.ChartAreas[0].AxisY.Title = "CDF";
