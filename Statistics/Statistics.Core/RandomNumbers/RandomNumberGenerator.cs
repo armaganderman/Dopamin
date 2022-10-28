@@ -73,6 +73,28 @@ namespace Statistics.Core.RandomNumbers
         }
      
         /// <summary>
+        /// Returns random double suitable for normal distribution
+        /// </summary>
+        /// <param name="mean">mean</param>
+        /// <param name="standardDeviation">standard deviation</param>
+        /// <returns></returns>
+        public static double GetNormalDistributedRandomNumber(double mean=0, double standardDeviation=1)
+        {
+            double randomNumber = 0;
+
+            double firstRandomNumber = GetRandomDouble(); 
+            double secondRandomNumber = GetRandomDouble();
+
+            if(mean == 0 && standardDeviation == 1)
+            {
+                randomNumber = Math.Sqrt(-2.0 * Math.Log(firstRandomNumber)) * Math.Sin(2.0 * Math.PI * secondRandomNumber);
+                return randomNumber;
+            }
+            else
+                return mean + standardDeviation * randomNumber; 
+        }
+
+        /// <summary>
         /// Returns random doubles suitable for normal (Gaussian) distribution using BoxMullerTransformation within specified range (min, max)
         /// </summary>
         /// <param name="mean">mean value</param>
@@ -81,15 +103,15 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="max">Maximum value of the specified range</param>
         /// <returns></returns>
         /// https://stackoverflow.com/questions/218060/random-gaussian-variables
-        public static double GetNormalDistributedRandomNumber(double mean, double standardDeviation, double min = 0, double max = 1)
+        public static double GetNormalDistributedRandomNumber(double mean=0, double standardDeviation=1, double min = -1, double max = 1)
         {
             double randomNumber = 0;
 
             do
             {
                 var normalRandom = GetNormalDistributedRandomNumber(0, 1);
-                randomNumber = 11 + 1 * normalRandom;
-            } while (randomNumber <= 8.0 && randomNumber >= 14.0);
+                randomNumber = mean + (standardDeviation * normalRandom);
+            } while (randomNumber <= min && randomNumber >= max);
 
             return randomNumber;
         }
@@ -102,9 +124,8 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="dbIteration">iteration number for double block random number generation. 5-10 is a suitable range</param>
         /// <returns></returns>
         /// https://inis.iaea.org/collection/NCLCollectionStore/_Public/26/055/26055147.pdf Date:26 Oct 2022
-        public static double GetSkewedNormalRandomNumber(double standardDeviation, double skewness, int dbIteration)
+        public static double GetSkewedNormalRandomNumber(double standardDeviation, double skewness, double mean = 0, int dbIteration = 10)
         {
-            var randomNumber = 0d;
             var variance = Math.Pow(standardDeviation, 2);
             const double a = 2.236067977; // ---> Square root of 5
             const double b = 0.222222222;
@@ -138,9 +159,7 @@ namespace Statistics.Core.RandomNumbers
             //Calculate final random number
             finalran = sumdbran / Math.Sqrt(dbIteration);
 
-            randomNumber = finalran;
-
-            return randomNumber;
+            return finalran;
         }
 
         #endregion
@@ -257,13 +276,13 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="skewness"></param>
         /// <param name="dbIteration"></param>
         /// <returns></returns>
-        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber, double standardDeviation, double skewness, int dbIteration)
+        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber, double standardDeviation, double skewness, double mean = 0, int dbIteration=10)
         {
             var randomNumberList = new List<double>();
 
             for (int i = 0; i < iterationNumber; i++)
             {
-                var randomNumber = GetSkewedNormalRandomNumber(standardDeviation, skewness, dbIteration);
+                var randomNumber = GetSkewedNormalRandomNumber(standardDeviation, skewness, mean, dbIteration);
                 randomNumberList.Add(randomNumber);
             }
 

@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Distributions\ContinousUniformDistribution.cs" />
+    <Compile Include="Distributions\NormalDistribution.cs" />
+    <Compile Include="Distributions\SkewedNormalDistribution.cs" />
+    <Compile Include="Distributions\TriangularDistribution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumbers\RandomNumberGenerator.cs" />
   </ItemGroup>

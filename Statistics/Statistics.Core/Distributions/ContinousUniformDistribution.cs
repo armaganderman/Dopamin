@@ -98,14 +98,21 @@ namespace Statistics.Core.Distributions
         /// A low standard deviation indicates that the values tend to be close to the mean (also called the expected value) of the set, 
         /// while a high standard deviation indicates that the values are spread out over a wider range.
         /// </summary>
-        /// <param name="minValue"></param>
-        /// <param name="maxValue"></param>
+        /// <param name="minValue">minimum value of uniform distribution</param>
+        /// <param name="maxValue">maximum value of uniform distribution</param>
         /// <returns></returns>
         public static double GetStandardDeviation(double minValue, double maxValue)
         {
             return Math.Sqrt(GetVariance(minValue, maxValue));
         }
 
+        /// <summary>
+        /// Returns a list of pdf values.
+        /// </summary>
+        /// <param name="minValue">minimum value of uniform distribution</param>
+        /// <param name="maxValue">maximum value of uniform distribution</param>
+        /// <param name="randomNumberList">a list of uniformly distributed radnom numbers</param>
+        /// <returns></returns>
         public static List<double> GetListOfPDF(double minValue, double maxValue, List<double> randomNumberList)
         {
             var pdfList = new List<double>();
@@ -117,6 +124,26 @@ namespace Statistics.Core.Distributions
             }
 
             return pdfList;
+        }
+
+        /// <summary>
+        /// Returns a list of cdf values.
+        /// </summary>
+        /// <param name="minValue">minimum value of uniform distribution</param>
+        /// <param name="maxValue">maximum value of uniform distribution</param>
+        /// <param name="randomNumberList">a list of uniformly distributed radnom numbers</param>
+        /// <returns></returns>
+        public static List<double> GetListOfCDF(double minValue, double maxValue, List<double> randomNumberList)
+        {
+            var cdfList = new List<double>();
+
+            for (int i = 0; i < randomNumberList.Count; i++)
+            {
+                var cdf = GetCDF(minValue, maxValue, randomNumberList[i]);
+                cdfList.Add(cdf);
+            }
+
+            return cdfList;
         }
 
     }
