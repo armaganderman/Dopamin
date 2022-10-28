@@ -1,11 +1,11 @@
-﻿using Statistics.Core.Distributions;
-using Statistics.Core.RandomNumbers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Statistics.Core.Distributions;
+using Statistics.Core.RandomNumbers;
 
 namespace Statistics.WinformsUI
 {
