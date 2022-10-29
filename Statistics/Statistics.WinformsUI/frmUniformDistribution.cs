@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Statistics.Core.Distributions;
+using Statistics.Core.RandomNumbers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Statistics.Core.Distributions;
-using Statistics.Core.RandomNumbers;
 
 namespace Statistics.WinformsUI
 {
@@ -40,6 +40,13 @@ namespace Statistics.WinformsUI
             chrtRandomNumbers.Legends.Clear();
             chrtPDF.Legends.Clear();
             chrtCDF.Legends.Clear();
+
+            lblUniformRandomNumbers.Enabled = false;
+            lblPDF.Enabled = false;
+            lblUniformCDF.Enabled = false;
+            lstbxRandomNumbers.Enabled = false;
+            lstbxPDF.Enabled = false;
+            lstbxCDF.Enabled = false;
         }
 
         #endregion
@@ -61,6 +68,38 @@ namespace Statistics.WinformsUI
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        #endregion
+
+        #region CheckBox
+
+        private void chckbxDisplayOutputs_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckbxDisplayOutputs.Checked)
+            {
+                lblUniformRandomNumbers.Enabled = true;
+                lblPDF.Enabled = true;
+                lblUniformCDF.Enabled = true;
+
+                lstbxRandomNumbers.Enabled = true;
+                lstbxPDF.Enabled = true;
+                lstbxCDF.Enabled = true;
+            }
+            else
+            {
+                lblUniformRandomNumbers.Enabled = false;
+                lblPDF.Enabled = false;
+                lblUniformCDF.Enabled = false;
+
+                lstbxRandomNumbers.Enabled = false;
+                lstbxPDF.Enabled = false;
+                lstbxCDF.Enabled = false;
+
+                lstbxRandomNumbers.DataSource = null;
+                lstbxPDF.DataSource = null;
+                lstbxCDF.DataSource = null;
+            }
         }
 
         #endregion

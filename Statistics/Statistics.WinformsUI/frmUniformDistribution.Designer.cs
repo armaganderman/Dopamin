@@ -47,7 +47,6 @@
             this.lblMinimumHeader = new System.Windows.Forms.Label();
             this.txtbxMaximum = new System.Windows.Forms.TextBox();
             this.grpbxNumbers = new System.Windows.Forms.GroupBox();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.lblUniformCDF = new System.Windows.Forms.Label();
             this.lblPDF = new System.Windows.Forms.Label();
             this.lblUniformRandomNumbers = new System.Windows.Forms.Label();
@@ -83,7 +82,6 @@
             // grpbxInputs
             // 
             this.grpbxInputs.Controls.Add(this.cmbbxIterationNumber);
-            this.grpbxInputs.Controls.Add(this.chckbxDisplayOutputs);
             this.grpbxInputs.Controls.Add(this.btnRun);
             this.grpbxInputs.Controls.Add(this.lblMaximumHeader);
             this.grpbxInputs.Controls.Add(this.lblIterationNumberHeader);
@@ -113,13 +111,14 @@
             // chckbxDisplayOutputs
             // 
             this.chckbxDisplayOutputs.AutoSize = true;
-            this.chckbxDisplayOutputs.Location = new System.Drawing.Point(6, 212);
+            this.chckbxDisplayOutputs.Location = new System.Drawing.Point(6, 34);
             this.chckbxDisplayOutputs.Name = "chckbxDisplayOutputs";
-            this.chckbxDisplayOutputs.Size = new System.Drawing.Size(170, 19);
+            this.chckbxDisplayOutputs.Size = new System.Drawing.Size(434, 19);
             this.chckbxDisplayOutputs.TabIndex = 25;
-            this.chckbxDisplayOutputs.Text = "Display outputs in listboxes";
+            this.chckbxDisplayOutputs.Text = "Display outputs in listboxes (Listboxes display only first thousand data points)";
             this.chckbxDisplayOutputs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chckbxDisplayOutputs.UseVisualStyleBackColor = true;
+            this.chckbxDisplayOutputs.CheckedChanged += new System.EventHandler(this.chckbxDisplayOutputs_CheckedChanged);
             // 
             // btnRun
             // 
@@ -178,7 +177,7 @@
             // 
             // grpbxNumbers
             // 
-            this.grpbxNumbers.Controls.Add(this.lblInfo);
+            this.grpbxNumbers.Controls.Add(this.chckbxDisplayOutputs);
             this.grpbxNumbers.Controls.Add(this.lblUniformCDF);
             this.grpbxNumbers.Controls.Add(this.lblPDF);
             this.grpbxNumbers.Controls.Add(this.lblUniformRandomNumbers);
@@ -192,19 +191,10 @@
             this.grpbxNumbers.TabStop = false;
             this.grpbxNumbers.Text = "Generated Random Numbers / PDF / CDF";
             // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(6, 241);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(260, 15);
-            this.lblInfo.TabIndex = 27;
-            this.lblInfo.Text = "Listboxes display only first thousand data points";
-            // 
             // lblUniformCDF
             // 
             this.lblUniformCDF.AutoSize = true;
-            this.lblUniformCDF.Location = new System.Drawing.Point(534, 35);
+            this.lblUniformCDF.Location = new System.Drawing.Point(534, 64);
             this.lblUniformCDF.Name = "lblUniformCDF";
             this.lblUniformCDF.Size = new System.Drawing.Size(29, 15);
             this.lblUniformCDF.TabIndex = 31;
@@ -213,7 +203,7 @@
             // lblPDF
             // 
             this.lblPDF.AutoSize = true;
-            this.lblPDF.Location = new System.Drawing.Point(316, 38);
+            this.lblPDF.Location = new System.Drawing.Point(316, 67);
             this.lblPDF.Name = "lblPDF";
             this.lblPDF.Size = new System.Drawing.Size(28, 15);
             this.lblPDF.TabIndex = 30;
@@ -222,7 +212,7 @@
             // lblUniformRandomNumbers
             // 
             this.lblUniformRandomNumbers.AutoSize = true;
-            this.lblUniformRandomNumbers.Location = new System.Drawing.Point(60, 38);
+            this.lblUniformRandomNumbers.Location = new System.Drawing.Point(60, 67);
             this.lblUniformRandomNumbers.Name = "lblUniformRandomNumbers";
             this.lblUniformRandomNumbers.Size = new System.Drawing.Size(104, 15);
             this.lblUniformRandomNumbers.TabIndex = 29;
@@ -232,7 +222,7 @@
             // 
             this.lstbxCDF.FormattingEnabled = true;
             this.lstbxCDF.ItemHeight = 15;
-            this.lstbxCDF.Location = new System.Drawing.Point(442, 67);
+            this.lstbxCDF.Location = new System.Drawing.Point(442, 91);
             this.lstbxCDF.Name = "lstbxCDF";
             this.lstbxCDF.Size = new System.Drawing.Size(212, 169);
             this.lstbxCDF.TabIndex = 28;
@@ -241,7 +231,7 @@
             // 
             this.lstbxPDF.FormattingEnabled = true;
             this.lstbxPDF.ItemHeight = 15;
-            this.lstbxPDF.Location = new System.Drawing.Point(224, 67);
+            this.lstbxPDF.Location = new System.Drawing.Point(224, 91);
             this.lstbxPDF.Name = "lstbxPDF";
             this.lstbxPDF.Size = new System.Drawing.Size(212, 169);
             this.lstbxPDF.TabIndex = 27;
@@ -250,7 +240,7 @@
             // 
             this.lstbxRandomNumbers.FormattingEnabled = true;
             this.lstbxRandomNumbers.ItemHeight = 15;
-            this.lstbxRandomNumbers.Location = new System.Drawing.Point(6, 67);
+            this.lstbxRandomNumbers.Location = new System.Drawing.Point(6, 91);
             this.lstbxRandomNumbers.Name = "lstbxRandomNumbers";
             this.lstbxRandomNumbers.Size = new System.Drawing.Size(212, 169);
             this.lstbxRandomNumbers.TabIndex = 26;
@@ -492,6 +482,5 @@
         private System.Windows.Forms.CheckBox chckbxDisplayOutputs;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ComboBox cmbbxIterationNumber;
-        private System.Windows.Forms.Label lblInfo;
     }
 }
