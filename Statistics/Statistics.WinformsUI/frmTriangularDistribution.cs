@@ -66,6 +66,38 @@ namespace Statistics.WinformsUI
 
         #endregion
 
+        #region CheckBox
+
+        private void chckbxDisplayOutputs_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckbxDisplayOutputs.Checked)
+            {
+                lblUniformRandomNumbers.Enabled = true;
+                lblPDF.Enabled = true;
+                lblUniformCDF.Enabled = true;
+
+                lstbxRandomNumbers.Enabled = true;
+                lstbxPDF.Enabled = true;
+                lstbxCDF.Enabled = true;
+            }
+            else
+            {
+                lblUniformRandomNumbers.Enabled = false;
+                lblPDF.Enabled = false;
+                lblUniformCDF.Enabled = false;
+
+                lstbxRandomNumbers.Enabled = false;
+                lstbxPDF.Enabled = false;
+                lstbxCDF.Enabled = false;
+
+                lstbxRandomNumbers.DataSource = null;
+                lstbxPDF.DataSource = null;
+                lstbxCDF.DataSource = null;
+            }
+        }
+
+        #endregion
+
         private void Run()
         {
             GetInputs();

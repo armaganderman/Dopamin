@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend19 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend20 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend21 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.grpbxStatistics = new System.Windows.Forms.GroupBox();
             this.lblMinimum = new System.Windows.Forms.Label();
             this.lblMaximum = new System.Windows.Forms.Label();
@@ -45,19 +45,12 @@
             this.lblMode = new System.Windows.Forms.Label();
             this.lblStandardDeviation = new System.Windows.Forms.Label();
             this.lblMedian = new System.Windows.Forms.Label();
-            this.grpbxNumbers = new System.Windows.Forms.GroupBox();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.lblUniformCDF = new System.Windows.Forms.Label();
-            this.lblPDF = new System.Windows.Forms.Label();
-            this.lblUniformRandomNumbers = new System.Windows.Forms.Label();
-            this.lstbxCDF = new System.Windows.Forms.ListBox();
-            this.lstbxPDF = new System.Windows.Forms.ListBox();
-            this.lstbxRandomNumbers = new System.Windows.Forms.ListBox();
             this.grpbxInputs = new System.Windows.Forms.GroupBox();
+            this.lblStdDevHeader = new System.Windows.Forms.Label();
+            this.txtbxStdDev = new System.Windows.Forms.TextBox();
             this.lblMeanHeader = new System.Windows.Forms.Label();
             this.txtbxMean = new System.Windows.Forms.TextBox();
             this.cmbbxIterationNumber = new System.Windows.Forms.ComboBox();
-            this.chckbxDisplayOutputs = new System.Windows.Forms.CheckBox();
             this.btnRun = new System.Windows.Forms.Button();
             this.lblMaximumHeader = new System.Windows.Forms.Label();
             this.lblIterationNumberHeader = new System.Windows.Forms.Label();
@@ -70,11 +63,16 @@
             this.chrtPDF = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.grpbxRandomNumbers = new System.Windows.Forms.GroupBox();
             this.chrtRandomNumbers = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.txtbxStdDev = new System.Windows.Forms.TextBox();
-            this.lblStdDevHeader = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.grpbxNumbers = new System.Windows.Forms.GroupBox();
+            this.chckbxDisplayOutputs = new System.Windows.Forms.CheckBox();
+            this.lblUniformCDF = new System.Windows.Forms.Label();
+            this.lblPDF = new System.Windows.Forms.Label();
+            this.lblUniformRandomNumbers = new System.Windows.Forms.Label();
+            this.lstbxCDF = new System.Windows.Forms.ListBox();
+            this.lstbxPDF = new System.Windows.Forms.ListBox();
+            this.lstbxRandomNumbers = new System.Windows.Forms.ListBox();
             this.grpbxStatistics.SuspendLayout();
-            this.grpbxNumbers.SuspendLayout();
             this.grpbxInputs.SuspendLayout();
             this.grpbxCDF.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtCDF)).BeginInit();
@@ -82,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chrtPDF)).BeginInit();
             this.grpbxRandomNumbers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrtRandomNumbers)).BeginInit();
+            this.grpbxNumbers.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpbxStatistics
@@ -163,85 +162,6 @@
             this.lblMedian.TabIndex = 28;
             this.lblMedian.Text = "Median";
             // 
-            // grpbxNumbers
-            // 
-            this.grpbxNumbers.Controls.Add(this.lblInfo);
-            this.grpbxNumbers.Controls.Add(this.lblUniformCDF);
-            this.grpbxNumbers.Controls.Add(this.lblPDF);
-            this.grpbxNumbers.Controls.Add(this.lblUniformRandomNumbers);
-            this.grpbxNumbers.Controls.Add(this.lstbxCDF);
-            this.grpbxNumbers.Controls.Add(this.lstbxPDF);
-            this.grpbxNumbers.Controls.Add(this.lstbxRandomNumbers);
-            this.grpbxNumbers.Location = new System.Drawing.Point(261, 12);
-            this.grpbxNumbers.Name = "grpbxNumbers";
-            this.grpbxNumbers.Size = new System.Drawing.Size(670, 266);
-            this.grpbxNumbers.TabIndex = 5;
-            this.grpbxNumbers.TabStop = false;
-            this.grpbxNumbers.Text = "Generated Random Numbers / PDF / CDF";
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(6, 241);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(260, 15);
-            this.lblInfo.TabIndex = 27;
-            this.lblInfo.Text = "Listboxes display only first thousand data points";
-            // 
-            // lblUniformCDF
-            // 
-            this.lblUniformCDF.AutoSize = true;
-            this.lblUniformCDF.Location = new System.Drawing.Point(534, 35);
-            this.lblUniformCDF.Name = "lblUniformCDF";
-            this.lblUniformCDF.Size = new System.Drawing.Size(29, 15);
-            this.lblUniformCDF.TabIndex = 31;
-            this.lblUniformCDF.Text = "CDF";
-            // 
-            // lblPDF
-            // 
-            this.lblPDF.AutoSize = true;
-            this.lblPDF.Location = new System.Drawing.Point(316, 38);
-            this.lblPDF.Name = "lblPDF";
-            this.lblPDF.Size = new System.Drawing.Size(28, 15);
-            this.lblPDF.TabIndex = 30;
-            this.lblPDF.Text = "PDF";
-            // 
-            // lblUniformRandomNumbers
-            // 
-            this.lblUniformRandomNumbers.AutoSize = true;
-            this.lblUniformRandomNumbers.Location = new System.Drawing.Point(60, 38);
-            this.lblUniformRandomNumbers.Name = "lblUniformRandomNumbers";
-            this.lblUniformRandomNumbers.Size = new System.Drawing.Size(104, 15);
-            this.lblUniformRandomNumbers.TabIndex = 29;
-            this.lblUniformRandomNumbers.Text = "Random Numbers";
-            // 
-            // lstbxCDF
-            // 
-            this.lstbxCDF.FormattingEnabled = true;
-            this.lstbxCDF.ItemHeight = 15;
-            this.lstbxCDF.Location = new System.Drawing.Point(442, 67);
-            this.lstbxCDF.Name = "lstbxCDF";
-            this.lstbxCDF.Size = new System.Drawing.Size(212, 169);
-            this.lstbxCDF.TabIndex = 28;
-            // 
-            // lstbxPDF
-            // 
-            this.lstbxPDF.FormattingEnabled = true;
-            this.lstbxPDF.ItemHeight = 15;
-            this.lstbxPDF.Location = new System.Drawing.Point(224, 67);
-            this.lstbxPDF.Name = "lstbxPDF";
-            this.lstbxPDF.Size = new System.Drawing.Size(212, 169);
-            this.lstbxPDF.TabIndex = 27;
-            // 
-            // lstbxRandomNumbers
-            // 
-            this.lstbxRandomNumbers.FormattingEnabled = true;
-            this.lstbxRandomNumbers.ItemHeight = 15;
-            this.lstbxRandomNumbers.Location = new System.Drawing.Point(6, 67);
-            this.lstbxRandomNumbers.Name = "lstbxRandomNumbers";
-            this.lstbxRandomNumbers.Size = new System.Drawing.Size(212, 169);
-            this.lstbxRandomNumbers.TabIndex = 26;
-            // 
             // grpbxInputs
             // 
             this.grpbxInputs.Controls.Add(this.lblStdDevHeader);
@@ -249,7 +169,6 @@
             this.grpbxInputs.Controls.Add(this.lblMeanHeader);
             this.grpbxInputs.Controls.Add(this.txtbxMean);
             this.grpbxInputs.Controls.Add(this.cmbbxIterationNumber);
-            this.grpbxInputs.Controls.Add(this.chckbxDisplayOutputs);
             this.grpbxInputs.Controls.Add(this.btnRun);
             this.grpbxInputs.Controls.Add(this.lblMaximumHeader);
             this.grpbxInputs.Controls.Add(this.lblIterationNumberHeader);
@@ -262,6 +181,24 @@
             this.grpbxInputs.TabIndex = 4;
             this.grpbxInputs.TabStop = false;
             this.grpbxInputs.Text = "Inputs";
+            // 
+            // lblStdDevHeader
+            // 
+            this.lblStdDevHeader.AutoSize = true;
+            this.lblStdDevHeader.Location = new System.Drawing.Point(6, 154);
+            this.lblStdDevHeader.Name = "lblStdDevHeader";
+            this.lblStdDevHeader.Size = new System.Drawing.Size(110, 15);
+            this.lblStdDevHeader.TabIndex = 30;
+            this.lblStdDevHeader.Text = "Standard Deviation:";
+            // 
+            // txtbxStdDev
+            // 
+            this.txtbxStdDev.Location = new System.Drawing.Point(127, 151);
+            this.txtbxStdDev.Name = "txtbxStdDev";
+            this.txtbxStdDev.Size = new System.Drawing.Size(110, 23);
+            this.txtbxStdDev.TabIndex = 29;
+            this.txtbxStdDev.Text = "0.35";
+            this.txtbxStdDev.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnlyTextbox);
             // 
             // lblMeanHeader
             // 
@@ -293,17 +230,6 @@
             this.cmbbxIterationNumber.Name = "cmbbxIterationNumber";
             this.cmbbxIterationNumber.Size = new System.Drawing.Size(110, 23);
             this.cmbbxIterationNumber.TabIndex = 26;
-            // 
-            // chckbxDisplayOutputs
-            // 
-            this.chckbxDisplayOutputs.AutoSize = true;
-            this.chckbxDisplayOutputs.Location = new System.Drawing.Point(6, 212);
-            this.chckbxDisplayOutputs.Name = "chckbxDisplayOutputs";
-            this.chckbxDisplayOutputs.Size = new System.Drawing.Size(170, 19);
-            this.chckbxDisplayOutputs.TabIndex = 25;
-            this.chckbxDisplayOutputs.Text = "Display outputs in listboxes";
-            this.chckbxDisplayOutputs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chckbxDisplayOutputs.UseVisualStyleBackColor = true;
             // 
             // btnRun
             // 
@@ -372,17 +298,17 @@
             // 
             // chrtCDF
             // 
-            chartArea19.Name = "ChartArea1";
-            this.chrtCDF.ChartAreas.Add(chartArea19);
+            chartArea4.Name = "ChartArea1";
+            this.chrtCDF.ChartAreas.Add(chartArea4);
             this.chrtCDF.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend19.Name = "Legend1";
-            this.chrtCDF.Legends.Add(legend19);
+            legend4.Name = "Legend1";
+            this.chrtCDF.Legends.Add(legend4);
             this.chrtCDF.Location = new System.Drawing.Point(3, 19);
             this.chrtCDF.Name = "chrtCDF";
-            series19.ChartArea = "ChartArea1";
-            series19.Legend = "Legend1";
-            series19.Name = "Series1";
-            this.chrtCDF.Series.Add(series19);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chrtCDF.Series.Add(series4);
             this.chrtCDF.Size = new System.Drawing.Size(494, 457);
             this.chrtCDF.TabIndex = 1;
             this.chrtCDF.Text = "chart3";
@@ -399,17 +325,17 @@
             // 
             // chrtPDF
             // 
-            chartArea20.Name = "ChartArea1";
-            this.chrtPDF.ChartAreas.Add(chartArea20);
+            chartArea5.Name = "ChartArea1";
+            this.chrtPDF.ChartAreas.Add(chartArea5);
             this.chrtPDF.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend20.Name = "Legend1";
-            this.chrtPDF.Legends.Add(legend20);
+            legend5.Name = "Legend1";
+            this.chrtPDF.Legends.Add(legend5);
             this.chrtPDF.Location = new System.Drawing.Point(3, 19);
             this.chrtPDF.Name = "chrtPDF";
-            series20.ChartArea = "ChartArea1";
-            series20.Legend = "Legend1";
-            series20.Name = "Series1";
-            this.chrtPDF.Series.Add(series20);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chrtPDF.Series.Add(series5);
             this.chrtPDF.Size = new System.Drawing.Size(494, 457);
             this.chrtPDF.TabIndex = 1;
             this.chrtPDF.Text = "chart2";
@@ -426,38 +352,20 @@
             // 
             // chrtRandomNumbers
             // 
-            chartArea21.Name = "ChartArea1";
-            this.chrtRandomNumbers.ChartAreas.Add(chartArea21);
+            chartArea6.Name = "ChartArea1";
+            this.chrtRandomNumbers.ChartAreas.Add(chartArea6);
             this.chrtRandomNumbers.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend21.Name = "Legend1";
-            this.chrtRandomNumbers.Legends.Add(legend21);
+            legend6.Name = "Legend1";
+            this.chrtRandomNumbers.Legends.Add(legend6);
             this.chrtRandomNumbers.Location = new System.Drawing.Point(3, 19);
             this.chrtRandomNumbers.Name = "chrtRandomNumbers";
-            series21.ChartArea = "ChartArea1";
-            series21.Legend = "Legend1";
-            series21.Name = "Series1";
-            this.chrtRandomNumbers.Series.Add(series21);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chrtRandomNumbers.Series.Add(series6);
             this.chrtRandomNumbers.Size = new System.Drawing.Size(494, 457);
             this.chrtRandomNumbers.TabIndex = 0;
             this.chrtRandomNumbers.Text = "chart1";
-            // 
-            // txtbxStdDev
-            // 
-            this.txtbxStdDev.Location = new System.Drawing.Point(127, 151);
-            this.txtbxStdDev.Name = "txtbxStdDev";
-            this.txtbxStdDev.Size = new System.Drawing.Size(110, 23);
-            this.txtbxStdDev.TabIndex = 29;
-            this.txtbxStdDev.Text = "0.35";
-            this.txtbxStdDev.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumericOnlyTextbox);
-            // 
-            // lblStdDevHeader
-            // 
-            this.lblStdDevHeader.AutoSize = true;
-            this.lblStdDevHeader.Location = new System.Drawing.Point(6, 154);
-            this.lblStdDevHeader.Name = "lblStdDevHeader";
-            this.lblStdDevHeader.Size = new System.Drawing.Size(110, 15);
-            this.lblStdDevHeader.TabIndex = 30;
-            this.lblStdDevHeader.Text = "Standard Deviation:";
             // 
             // btnClose
             // 
@@ -469,17 +377,99 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // grpbxNumbers
+            // 
+            this.grpbxNumbers.Controls.Add(this.chckbxDisplayOutputs);
+            this.grpbxNumbers.Controls.Add(this.lblUniformCDF);
+            this.grpbxNumbers.Controls.Add(this.lblPDF);
+            this.grpbxNumbers.Controls.Add(this.lblUniformRandomNumbers);
+            this.grpbxNumbers.Controls.Add(this.lstbxCDF);
+            this.grpbxNumbers.Controls.Add(this.lstbxPDF);
+            this.grpbxNumbers.Controls.Add(this.lstbxRandomNumbers);
+            this.grpbxNumbers.Location = new System.Drawing.Point(261, 12);
+            this.grpbxNumbers.Name = "grpbxNumbers";
+            this.grpbxNumbers.Size = new System.Drawing.Size(670, 266);
+            this.grpbxNumbers.TabIndex = 17;
+            this.grpbxNumbers.TabStop = false;
+            this.grpbxNumbers.Text = "Generated Random Numbers / PDF / CDF";
+            // 
+            // chckbxDisplayOutputs
+            // 
+            this.chckbxDisplayOutputs.AutoSize = true;
+            this.chckbxDisplayOutputs.Location = new System.Drawing.Point(6, 34);
+            this.chckbxDisplayOutputs.Name = "chckbxDisplayOutputs";
+            this.chckbxDisplayOutputs.Size = new System.Drawing.Size(434, 19);
+            this.chckbxDisplayOutputs.TabIndex = 25;
+            this.chckbxDisplayOutputs.Text = "Display outputs in listboxes (Listboxes display only first thousand data points)";
+            this.chckbxDisplayOutputs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chckbxDisplayOutputs.UseVisualStyleBackColor = true;
+            this.chckbxDisplayOutputs.CheckedChanged += new System.EventHandler(this.chckbxDisplayOutputs_CheckedChanged);
+            // 
+            // lblUniformCDF
+            // 
+            this.lblUniformCDF.AutoSize = true;
+            this.lblUniformCDF.Location = new System.Drawing.Point(534, 64);
+            this.lblUniformCDF.Name = "lblUniformCDF";
+            this.lblUniformCDF.Size = new System.Drawing.Size(29, 15);
+            this.lblUniformCDF.TabIndex = 31;
+            this.lblUniformCDF.Text = "CDF";
+            // 
+            // lblPDF
+            // 
+            this.lblPDF.AutoSize = true;
+            this.lblPDF.Location = new System.Drawing.Point(316, 67);
+            this.lblPDF.Name = "lblPDF";
+            this.lblPDF.Size = new System.Drawing.Size(28, 15);
+            this.lblPDF.TabIndex = 30;
+            this.lblPDF.Text = "PDF";
+            // 
+            // lblUniformRandomNumbers
+            // 
+            this.lblUniformRandomNumbers.AutoSize = true;
+            this.lblUniformRandomNumbers.Location = new System.Drawing.Point(60, 67);
+            this.lblUniformRandomNumbers.Name = "lblUniformRandomNumbers";
+            this.lblUniformRandomNumbers.Size = new System.Drawing.Size(104, 15);
+            this.lblUniformRandomNumbers.TabIndex = 29;
+            this.lblUniformRandomNumbers.Text = "Random Numbers";
+            // 
+            // lstbxCDF
+            // 
+            this.lstbxCDF.FormattingEnabled = true;
+            this.lstbxCDF.ItemHeight = 15;
+            this.lstbxCDF.Location = new System.Drawing.Point(442, 91);
+            this.lstbxCDF.Name = "lstbxCDF";
+            this.lstbxCDF.Size = new System.Drawing.Size(212, 169);
+            this.lstbxCDF.TabIndex = 28;
+            // 
+            // lstbxPDF
+            // 
+            this.lstbxPDF.FormattingEnabled = true;
+            this.lstbxPDF.ItemHeight = 15;
+            this.lstbxPDF.Location = new System.Drawing.Point(224, 91);
+            this.lstbxPDF.Name = "lstbxPDF";
+            this.lstbxPDF.Size = new System.Drawing.Size(212, 169);
+            this.lstbxPDF.TabIndex = 27;
+            // 
+            // lstbxRandomNumbers
+            // 
+            this.lstbxRandomNumbers.FormattingEnabled = true;
+            this.lstbxRandomNumbers.ItemHeight = 15;
+            this.lstbxRandomNumbers.Location = new System.Drawing.Point(6, 91);
+            this.lstbxRandomNumbers.Name = "lstbxRandomNumbers";
+            this.lstbxRandomNumbers.Size = new System.Drawing.Size(212, 169);
+            this.lstbxRandomNumbers.TabIndex = 26;
+            // 
             // frmNormalDistribution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.grpbxNumbers);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.grpbxCDF);
             this.Controls.Add(this.grpbxPDF);
             this.Controls.Add(this.grpbxRandomNumbers);
             this.Controls.Add(this.grpbxStatistics);
-            this.Controls.Add(this.grpbxNumbers);
             this.Controls.Add(this.grpbxInputs);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmNormalDistribution";
@@ -488,8 +478,6 @@
             this.Load += new System.EventHandler(this.frmNormalDistribution_Load);
             this.grpbxStatistics.ResumeLayout(false);
             this.grpbxStatistics.PerformLayout();
-            this.grpbxNumbers.ResumeLayout(false);
-            this.grpbxNumbers.PerformLayout();
             this.grpbxInputs.ResumeLayout(false);
             this.grpbxInputs.PerformLayout();
             this.grpbxCDF.ResumeLayout(false);
@@ -498,6 +486,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chrtPDF)).EndInit();
             this.grpbxRandomNumbers.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chrtRandomNumbers)).EndInit();
+            this.grpbxNumbers.ResumeLayout(false);
+            this.grpbxNumbers.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,19 +502,10 @@
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.Label lblStandardDeviation;
         private System.Windows.Forms.Label lblMedian;
-        private System.Windows.Forms.GroupBox grpbxNumbers;
-        private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.Label lblUniformCDF;
-        private System.Windows.Forms.Label lblPDF;
-        private System.Windows.Forms.Label lblUniformRandomNumbers;
-        private System.Windows.Forms.ListBox lstbxCDF;
-        private System.Windows.Forms.ListBox lstbxPDF;
-        private System.Windows.Forms.ListBox lstbxRandomNumbers;
         private System.Windows.Forms.GroupBox grpbxInputs;
         private System.Windows.Forms.Label lblMeanHeader;
         private System.Windows.Forms.TextBox txtbxMean;
         private System.Windows.Forms.ComboBox cmbbxIterationNumber;
-        private System.Windows.Forms.CheckBox chckbxDisplayOutputs;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Label lblMaximumHeader;
         private System.Windows.Forms.Label lblIterationNumberHeader;
@@ -540,5 +521,13 @@
         private System.Windows.Forms.Label lblStdDevHeader;
         private System.Windows.Forms.TextBox txtbxStdDev;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.GroupBox grpbxNumbers;
+        private System.Windows.Forms.CheckBox chckbxDisplayOutputs;
+        private System.Windows.Forms.Label lblUniformCDF;
+        private System.Windows.Forms.Label lblPDF;
+        private System.Windows.Forms.Label lblUniformRandomNumbers;
+        private System.Windows.Forms.ListBox lstbxCDF;
+        private System.Windows.Forms.ListBox lstbxPDF;
+        private System.Windows.Forms.ListBox lstbxRandomNumbers;
     }
 }
