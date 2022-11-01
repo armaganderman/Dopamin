@@ -193,8 +193,8 @@ namespace Statistics.WinformsUI
             }
             // *** ----- ***
 
-            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
-            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMean - (3 * _inputStdDev);
+            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMean + (3 * _inputStdDev);
             chrtRandomNumbers.ChartAreas[0].AxisY.Minimum = 0;
             chrtRandomNumbers.ChartAreas[0].AxisY.Maximum = buckets.Max();
 
@@ -260,8 +260,8 @@ namespace Statistics.WinformsUI
             chrtPDF.Series["PDF"].Points.AddXY(0, 0);
             // *** ----- ***
 
-            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
-            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMean - (4 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMean + (4 * _inputStdDev);
             chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
             chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
             chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
@@ -276,8 +276,8 @@ namespace Statistics.WinformsUI
             chrtCDF.Series["CDF"].ChartType = SeriesChartType.Point;
             chrtCDF.Series["CDF"].BorderWidth = 1;
 
-            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
-            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMean - (4 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMean + (4 * _inputStdDev);
 
             chrtCDF.ChartAreas[0].AxisX.Title = "Value";
             chrtCDF.ChartAreas[0].AxisY.Title = "CDF";

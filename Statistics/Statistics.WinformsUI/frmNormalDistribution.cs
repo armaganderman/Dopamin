@@ -275,8 +275,8 @@ namespace Statistics.WinformsUI
             chrtPDF.Series["PDF"].Points.AddXY(0, 0);
             // *** ----- ***
 
-            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
-            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMean - (4 * _inputStdDev);
+            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMean + (4 * _inputStdDev);
             chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
             chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
             chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
@@ -291,8 +291,8 @@ namespace Statistics.WinformsUI
             chrtCDF.Series["CDF"].ChartType = SeriesChartType.Point;
             chrtCDF.Series["CDF"].BorderWidth = 1;
 
-            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMinimum - (3 * _inputStdDev);
-            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMaximum + (3 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Minimum = _inputMean - (4 * _inputStdDev);
+            chrtCDF.ChartAreas[0].AxisX.Maximum = _inputMean + (4 * _inputStdDev);
 
             chrtCDF.ChartAreas[0].AxisX.Title = "Value";
             chrtCDF.ChartAreas[0].AxisY.Title = "CDF";
@@ -305,9 +305,9 @@ namespace Statistics.WinformsUI
             var cdfList = new List<double>();
             var randomNumberList = new List<double>();
 
-            if (_cdfList.Count() > 1000)
+            if (_cdfList.Count() > 10000)
             {
-                var skipNumber = _cdfList.Count() / 1000;
+                var skipNumber = _cdfList.Count() / 10000;
 
                 for (int i = 0; i < _cdfList.Count; i = i + skipNumber)
                 {

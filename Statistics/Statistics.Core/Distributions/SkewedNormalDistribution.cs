@@ -20,9 +20,10 @@ namespace Statistics.Core.Distributions
         public static double GetPDF(double mean, double standardDeviation, double skewness, double x)
         {
             var pdf = 0d;
+            double y = (x - mean) / standardDeviation;
             var variable = skewness * x;
-            var normalPDF = NormalDistribution.GetPDF(0, 1, x);
-            var normalCDF = NormalDistribution.GetCDF(0, 1, variable);
+            double normalPDF = NormalDistribution.GetPDF(0, 1, y);
+            double normalCDF = NormalDistribution.GetCDF(0, 1, variable);
             pdf = 2 * normalPDF * normalCDF;
             return pdf;
         }
