@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Statistics.Core.RandomNumbers
+namespace Dopamin.Statistics.Core.RandomNumbers
 {
     public static class RandomNumberGenerator
     {
@@ -71,27 +68,23 @@ namespace Statistics.Core.RandomNumbers
 
             return randomNumber;
         }
-     
+
         /// <summary>
         /// Returns random double suitable for normal distribution
         /// </summary>
         /// <param name="mean">mean</param>
         /// <param name="standardDeviation">standard deviation</param>
         /// <returns></returns>
-        public static double GetNormalDistributedRandomNumber(double mean=0, double standardDeviation=1)
+        public static double GetNormalDistributedRandomNumber(double mean = 0, double standardDeviation = 1)
         {
             double randomNumber = 0;
 
-            double firstRandomNumber = GetRandomDouble(); 
+            double firstRandomNumber = GetRandomDouble();
             double secondRandomNumber = GetRandomDouble();
 
-            if(mean == 0 && standardDeviation == 1)
-            {
-                randomNumber = Math.Sqrt(-2.0 * Math.Log(firstRandomNumber)) * Math.Sin(2.0 * Math.PI * secondRandomNumber);
-                return randomNumber;
-            }
-            else
-                return mean + standardDeviation * randomNumber; 
+            randomNumber = Math.Sqrt(-2.0 * Math.Log(firstRandomNumber)) * Math.Sin(2.0 * Math.PI * secondRandomNumber);
+
+            return mean + standardDeviation * randomNumber;
         }
 
         /// <summary>
@@ -103,7 +96,7 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="max">Maximum value of the specified range</param>
         /// <returns></returns>
         /// https://stackoverflow.com/questions/218060/random-gaussian-variables
-        public static double GetNormalDistributedRandomNumber(double mean=0, double standardDeviation=1, double min = -1, double max = 1)
+        public static double GetNormalDistributedRandomNumber(double mean = 0, double standardDeviation = 1, double min = -1, double max = 1)
         {
             double randomNumber = 0;
 
@@ -125,7 +118,7 @@ namespace Statistics.Core.RandomNumbers
         /// <returns></returns>
         /// https://inis.iaea.org/collection/NCLCollectionStore/_Public/26/055/26055147.pdf Date:26 Oct 2022
         /// A method for generating skewed random numbers using two overlapping uniform distributions, Ermak & Nasstrom, 1995.
-        public static double GetSkewedNormalRandomNumber(double standardDeviation=1, double skewness=0, double minimum=-1, double maximum=1, double mean = 0, int dbIteration = 10)
+        public static double GetSkewedNormalRandomNumber(double standardDeviation = 1, double skewness = 0, double minimum = -1, double maximum = 1, double mean = 0, int dbIteration = 10)
         {
             var randomNumber = 0d;
 
@@ -145,7 +138,7 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="skewness">skewness</param>
         /// <param name="dbIteration">iteration number for double block random number generation. 5-10 is a suitable range</param>
         /// <returns></returns>
-        private static double GetSkewedRandomNumber(double standardDeviation=1, double skewness=0, int dbIteration = 10)
+        private static double GetSkewedRandomNumber(double standardDeviation = 1, double skewness = 0, int dbIteration = 10)
         {
             var variance = Math.Pow(standardDeviation, 2);
             const double a = 2.236067977; // ---> Square root of 5
@@ -274,6 +267,26 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="iterationNumber">defines how many times you want the random double to be generated</param>
         /// <param name="mean">mean value</param>
         /// <param name="standardDeviation">standard deviation</param>
+        /// <returns></returns>
+        public static List<double> GetListOfNormalDistributedRandomNumbers(int iterationNumber, double mean, double standardDeviation)
+        {
+            var randomNumberList = new List<double>();
+
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                var randomNumber = GetNormalDistributedRandomNumber(mean, standardDeviation);
+                randomNumberList.Add(randomNumber);
+            }
+
+            return randomNumberList;
+        }
+
+        /// <summary>
+        /// Returns a list of random doubles suitable for normal distribution within specified range.
+        /// </summary>
+        /// <param name="iterationNumber">defines how many times you want the random double to be generated</param>
+        /// <param name="mean">mean value</param>
+        /// <param name="standardDeviation">standard deviation</param>
         /// <param name="min">Minimum value of the specified range</param>
         /// <param name="max">Maximum value of the specified range</param>
         /// <returns></returns>
@@ -298,7 +311,7 @@ namespace Statistics.Core.RandomNumbers
         /// <param name="skewness"></param>
         /// <param name="dbIteration"></param>
         /// <returns></returns>
-        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber=1000, double standardDeviation=1, double skewness=0, double minimum = -1, double maximum = 1, double mean = 0, int dbIteration=10)
+        public static List<double> GetListOfSkewedNormalRandomNumbers(int iterationNumber = 1000, double standardDeviation = 1, double skewness = 0, double minimum = -1, double maximum = 1, double mean = 0, int dbIteration = 10)
         {
             var randomNumberList = new List<double>();
 

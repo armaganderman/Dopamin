@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Statistics.Core.Distributions
+namespace Dopamin.Statistics.Core.Distributions
 {
     public static class NormalDistribution
     {

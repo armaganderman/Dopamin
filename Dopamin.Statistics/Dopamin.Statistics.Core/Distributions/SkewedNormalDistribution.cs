@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Statistics.Core.Distributions
+namespace Dopamin.Statistics.Core.Distributions
 {
     public static class SkewedNormalDistribution
     {
@@ -20,10 +20,10 @@ namespace Statistics.Core.Distributions
         public static double GetPDF(double mean, double standardDeviation, double skewness, double x)
         {
             var pdf = 0d;
-            double y = (x - mean) / standardDeviation;
+            var y = (x - mean) / standardDeviation;
             var variable = skewness * x;
-            double normalPDF = NormalDistribution.GetPDF(0, 1, y);
-            double normalCDF = NormalDistribution.GetCDF(0, 1, variable);
+            var normalPDF = NormalDistribution.GetPDF(0, 1, y);
+            var normalCDF = NormalDistribution.GetCDF(0, 1, variable);
             pdf = 2 * normalPDF * normalCDF;
             return pdf;
         }
