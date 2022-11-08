@@ -41,6 +41,12 @@ namespace Dopamin.Statistics.WinformsUI
             fNormalDistribution.Show();
         }
 
+        private void btnLognormal_Click(object sender, EventArgs e)
+        {
+            var fLognormalDistribution = new frmLognormalDistribution();
+            fLognormalDistribution.Show();
+        }
+
         private void btnSkewed_Click(object sender, System.EventArgs e)
         {
             var fSkewedNormalDistribution = new frmSkewedNormalDistribution();
@@ -54,5 +60,6 @@ namespace Dopamin.Statistics.WinformsUI
 
         #endregion
 
+       
     }
 }

@@ -33,11 +33,12 @@
             this.btnUniform = new System.Windows.Forms.Button();
             this.btnTriangular = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnLognormal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSkewed
             // 
-            this.btnSkewed.Location = new System.Drawing.Point(12, 99);
+            this.btnSkewed.Location = new System.Drawing.Point(12, 128);
             this.btnSkewed.Name = "btnSkewed";
             this.btnSkewed.Size = new System.Drawing.Size(220, 23);
             this.btnSkewed.TabIndex = 9;
@@ -85,11 +86,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnLognormal
+            // 
+            this.btnLognormal.Location = new System.Drawing.Point(12, 99);
+            this.btnLognormal.Name = "btnLognormal";
+            this.btnLognormal.Size = new System.Drawing.Size(220, 23);
+            this.btnLognormal.TabIndex = 10;
+            this.btnLognormal.Text = "Lognormal Distribution";
+            this.btnLognormal.UseVisualStyleBackColor = true;
+            this.btnLognormal.Click += new System.EventHandler(this.btnLognormal_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(244, 222);
+            this.Controls.Add(this.btnLognormal);
             this.Controls.Add(this.btnSkewed);
             this.Controls.Add(this.btnNormal);
             this.Controls.Add(this.btnUniform);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btnUniform;
         private System.Windows.Forms.Button btnTriangular;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnLognormal;
     }
 }

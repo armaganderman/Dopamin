@@ -92,6 +92,7 @@
             this.btnClose.TabIndex = 31;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // grpbxCDF
             // 
@@ -200,6 +201,7 @@
             this.chckbxDisplayOutputs.Text = "Display outputs in listboxes (Listboxes display only first thousand data points)";
             this.chckbxDisplayOutputs.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chckbxDisplayOutputs.UseVisualStyleBackColor = true;
+            this.chckbxDisplayOutputs.CheckedChanged += new System.EventHandler(this.chckbxDisplayOutputs_CheckedChanged);
             // 
             // lblUniformCDF
             // 
@@ -412,7 +414,7 @@
             this.txtbxStdDev.Name = "txtbxStdDev";
             this.txtbxStdDev.Size = new System.Drawing.Size(110, 20);
             this.txtbxStdDev.TabIndex = 29;
-            this.txtbxStdDev.Text = "1";
+            this.txtbxStdDev.Text = "0.05";
             // 
             // lblMeanHeader
             // 
@@ -429,7 +431,7 @@
             this.txtbxMean.Name = "txtbxMean";
             this.txtbxMean.Size = new System.Drawing.Size(110, 20);
             this.txtbxMean.TabIndex = 27;
-            this.txtbxMean.Text = "0";
+            this.txtbxMean.Text = "1";
             // 
             // cmbbxIterationNumber
             // 
@@ -452,6 +454,7 @@
             this.btnRun.TabIndex = 24;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // lblIterationNumberHeader
             // 
@@ -477,6 +480,7 @@
             this.Name = "frmLognormalDistribution";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLognormalDistribution";
+            this.Load += new System.EventHandler(this.frmLognormalDistribution_Load);
             this.grpbxCDF.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chrtCDF)).EndInit();
             this.grpbxPDF.ResumeLayout(false);

@@ -177,6 +177,19 @@ namespace Dopamin.Statistics.Core.RandomNumbers
             return finalrun;
         }
 
+        /// <summary>
+        /// Returns random doubles suitable for lognormal distribution.
+        /// </summary>
+        /// <param name="mean">mean value</param>
+        /// <param name="standardDeviation">standard deviation</param>
+        /// <returns></returns>
+        public static double GetLognormalDistributedRandomNumber(double mean = 0, double standardDeviation = 1)
+        {
+            double normalRandomNumber = GetNormalDistributedRandomNumber(mean, standardDeviation);
+
+            return Math.Exp(normalRandomNumber);
+        }
+
         #endregion
 
         #region Random Numbers As List
@@ -318,6 +331,26 @@ namespace Dopamin.Statistics.Core.RandomNumbers
             for (int i = 0; i < iterationNumber; i++)
             {
                 var randomNumber = GetSkewedNormalRandomNumber(standardDeviation, skewness, minimum, maximum, mean, dbIteration);
+                randomNumberList.Add(randomNumber);
+            }
+
+            return randomNumberList;
+        }
+
+        /// <summary>
+        /// Returns a list of random variables suitable for lognormal distribution
+        /// </summary>
+        /// <param name="iterationNumber">defines how many times you want the random double to be generated</param>
+        /// <param name="mean">mean value</param>
+        /// <param name="standardDeviation">standard deviation</param>
+        /// <returns></returns>
+        public static List<double> GetListOfLognormalDistributedRandomNumbers(int iterationNumber, double mean, double standardDeviation)
+        {
+            var randomNumberList = new List<double>();
+
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                var randomNumber = GetLognormalDistributedRandomNumber(mean, standardDeviation);
                 randomNumberList.Add(randomNumber);
             }
 

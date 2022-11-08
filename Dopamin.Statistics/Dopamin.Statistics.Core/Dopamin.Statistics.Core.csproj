@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Distributions\ContinousUniformDistribution.cs" />
+    <Compile Include="Distributions\LognormalDistribution.cs" />
     <Compile Include="Distributions\NormalDistribution.cs" />
     <Compile Include="Distributions\SkewedNormalDistribution.cs" />
     <Compile Include="Distributions\TriangularDistribution.cs" />

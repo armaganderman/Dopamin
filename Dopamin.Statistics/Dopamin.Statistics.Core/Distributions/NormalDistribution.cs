@@ -118,6 +118,15 @@ namespace Dopamin.Statistics.Core.Distributions
             return standardDeviation;
         }
 
+        public static double GetQuantile(double mean, double standardDeviation, double p)
+        {
+            double quantile = 0;
+
+            quantile = mean + (standardDeviation * Math.Sqrt(2) / ErrorFunction((2 * p) - 1));
+
+            return quantile;
+        }
+
         /// <summary>
         /// Returns a list of PDF values
         /// </summary>
@@ -157,6 +166,21 @@ namespace Dopamin.Statistics.Core.Distributions
 
             return cdfList;
         }
+
+        public static List<double> GetListOfQuantile(double mean, double standardDeviation, List<double> pList, double iterationNumber)
+        {
+            var quantileList = new List<double>();
+
+            for (int i = 0; i < iterationNumber; i++)
+            {
+                var quantile = GetQuantile(mean, standardDeviation, pList[i]);
+                quantileList.Add(quantile);
+            }
+
+            return quantileList;
+        }
+
+
 
     }
 }
