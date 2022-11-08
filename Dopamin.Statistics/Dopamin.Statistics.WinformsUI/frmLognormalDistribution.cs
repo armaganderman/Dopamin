@@ -205,10 +205,10 @@ namespace Dopamin.Statistics.WinformsUI
             }
             // *** ----- ***
 
-            //chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _inputMean - (3 * _inputStdDev); ;
-            //chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _inputMean + (3 * _inputStdDev);
-            //chrtRandomNumbers.ChartAreas[0].AxisY.Minimum = 0;
-            //chrtRandomNumbers.ChartAreas[0].AxisY.Maximum = buckets.Max();
+            chrtRandomNumbers.ChartAreas[0].AxisX.Minimum = _randomNumberList.Min() ;
+            chrtRandomNumbers.ChartAreas[0].AxisX.Maximum = _randomNumberList.Max(); ;
+            chrtRandomNumbers.ChartAreas[0].AxisY.Minimum = 0;
+            chrtRandomNumbers.ChartAreas[0].AxisY.Maximum = buckets.Max();
 
             chrtRandomNumbers.ChartAreas[0].AxisX.Title = "Random Numbers";
             chrtRandomNumbers.ChartAreas[0].AxisY.Title = "Frequency";
@@ -226,7 +226,7 @@ namespace Dopamin.Statistics.WinformsUI
             chrtPDF.Series["RandomNumbers"].ChartType = SeriesChartType.Column;
             chrtPDF.Series["RandomNumbers"].BorderWidth = 1;
             chrtPDF.Series["RandomNumbers"].BorderColor = Color.Black;
-            chrtPDF.Series[0]["PointWidth"] = "1";
+            chrtPDF.Series["RandomNumbers"]["PointWidth"] = "1";
             chrtPDF.Series["RandomNumbers"].YAxisType = AxisType.Primary;
 
             chrtPDF.Series["PDF"].ChartType = SeriesChartType.StackedColumn;
@@ -270,15 +270,15 @@ namespace Dopamin.Statistics.WinformsUI
                 chrtPDF.Series["RandomNumbers"].Points.AddXY(x, y);
             }
 
-            chrtPDF.Series["PDF"].Points.AddXY(_randomNumberList.Min(), buckets.Min());
+            chrtPDF.Series["PDF"].Points.AddXY(_randomNumberList.Max(), 0);
             // *** ----- ***
 
-            //chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMean - (3 * _inputStdDev);
-            //chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMean + (3 * _inputStdDev);
-            //chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
-            //chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
-            //chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
-            //chrtPDF.ChartAreas[0].AxisY2.Maximum = _pdfList.Max();
+            chrtPDF.ChartAreas[0].AxisX.Minimum = _randomNumberList.Min();
+            chrtPDF.ChartAreas[0].AxisX.Maximum = _randomNumberList.Max(); ;
+            chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
+            chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
+            chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;
+            chrtPDF.ChartAreas[0].AxisY2.Maximum = _pdfList.Max();
         }
 
         private void DisplayCDF()

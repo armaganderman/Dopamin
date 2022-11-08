@@ -15,7 +15,7 @@ namespace Dopamin.Statistics.Core.Distributions
             double equation1 = Math.Log(x) - mean;
             double equation2 = -(Math.Pow(equation1, 2) / (2 * Math.Pow(standardDeviation, 2)));
             double equation3 = 1 / (x * standardDeviation * Math.Sqrt(2 * Math.PI));
-            pdf = equation3 * equation2;
+            pdf = equation3 * Math.Exp(equation2);
 
             return pdf;
         }
