@@ -176,7 +176,6 @@ namespace Dopamin.Statistics.WinformsUI
             lblTrials.Text = $"Trials: {_iterationNumber}";
         }
 
-
         private void DisplayHistogram()
         {
             chrtRandomNumbers.Series.Clear();
@@ -282,8 +281,8 @@ namespace Dopamin.Statistics.WinformsUI
             chrtPDF.Series["PDF"].Points.AddXY(0, 0);
             // *** ----- ***
 
-            chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMean - (3 * _inputStdDev);
-            chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMean + (3 * _inputStdDev);
+            //chrtPDF.ChartAreas[0].AxisX.Minimum = _inputMean - (3 * _inputStdDev);
+            //chrtPDF.ChartAreas[0].AxisX.Maximum = _inputMean + (3 * _inputStdDev);
             chrtPDF.ChartAreas[0].AxisY.Minimum = 0;
             chrtPDF.ChartAreas[0].AxisY.Maximum = buckets.Max();
             chrtPDF.ChartAreas[0].AxisY2.Minimum = 0;

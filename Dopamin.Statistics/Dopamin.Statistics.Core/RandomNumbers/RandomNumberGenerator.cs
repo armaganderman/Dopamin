@@ -124,7 +124,7 @@ namespace Dopamin.Statistics.Core.RandomNumbers
 
             do
             {
-                var dbRandomNumber = GetSkewedRandomNumber(standardDeviation, skewness, dbIteration);
+                var dbRandomNumber = GetSkewedRandomNumber(1, skewness, dbIteration);
                 randomNumber = mean + standardDeviation * dbRandomNumber;
             } while (randomNumber <= minimum && randomNumber >= maximum);
 
